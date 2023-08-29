@@ -14,6 +14,7 @@ import itertools
 from IPython.display import clear_output
 import streamlit as st
 from main import test_plot, get_data, get_individual_stock
+import holoviews as hv
 
 # global variables
 
@@ -39,25 +40,28 @@ with open(optionable_stocks_path, 'r') as file:
     optionable_stocks = file.read()
 optionable_stocks = optionable_stocks.replace('\n', ' ')
 
+
 #user_ticker = st.text_input(label='What ticker would you like to analyze?', max_chars=4, key= 'user_ticker')
 #st.write('Pulling YF data')
 #stocks_1d = get_data('1d', '2017-01-01', yesterday, optionable_stocks)
 #st.write('YF data pulled successfully')
 
 
-
+user_ticker = "AAPL"
 #if st.button("Pull data on this ticker"):
 #        ticker_data = get_individual_stock(st.session_state.user_ticker, stocks_1d)
 #        st.write(f'{user_ticker} data ready')
 #        st.dataframe(ticker_data)
-if 'user_ticker' not in st.session_state:
-    st.session_state.user_ticker = st.text_input(label='What ticker would you like to analyze?', max_chars=4)
-if 'stocks_1d' not in st.session_state:
-    st.session_state.stocks_1d = get_data('1d', '2017-01-01', yesterday, optionable_stocks)
-st.write('Data pulled successfully')
+#if 'user_ticker' not in st.session_state:
+#    st.session_state.user_ticker = st.text_input(label='What ticker would you like to analyze?', max_chars=4)
+#if 'stocks_1d' not in st.session_state:
+#    st.session_state.stocks_1d = get_data('1d', '2017-01-01', yesterday, optionable_stocks)
+#st.write('Data pulled successfully')
 
 if st.button("Pull data on this ticker"):
-    
-    st.session_state.ticker_data = get_individual_stock(st.session_state.user_ticker, st.session_state.stocks_1d)
-    st.write(f'{st.session_state.user_ticker} data ready')
-    st.write(st.session_state.ticker_data)
+    stocks_1d = get_data('1d', '2017-01-01', yesterday, optionable_stocks)
+    ticker_data = get_individual_stock(user_ticker, stocks_1d)
+    st.write(ticker_data)
+    st.write(stocks_1d)
+    p1 = ticker_data['Close'].hvplot()
+    st.bokeh_chart(hv.render(p1, backend='bokeh'))
