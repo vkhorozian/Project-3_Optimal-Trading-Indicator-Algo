@@ -1,67 +1,49 @@
-
-# Imports
-import warnings
-warnings.filterwarnings('ignore')
-import pandas as pd
-import numpy as np
-import yfinance as yf
-import hvplot.pandas
-from pathlib import Path
-from finta import TA
-import matplotlib.pyplot as plt
-import quantstats as qs
-import itertools
-from IPython.display import clear_output
 import streamlit as st
-from main import test_plot, get_data, get_individual_stock
-import holoviews as hv
+import os
 
-# global variables
+# Dropdown navigation
+page_options = [
+    "Page 1: Sharpe ratio v Cumulative returns",
+    "Page 2: Annualized Returns vs Annualized Volatility",
+    "Page 3: Top 3 Portfolio Returns vs S&P",
+    "Page 4: Returns vs Standard Deviation",
+    "Page 5: Performance Metrics"
+]
 
-sqrt = np.sqrt(252)
-trading_days_year = 252
-total_days_year = 365
-thirty_years_ago = (pd.Timestamp.today() - pd.Timedelta(days = total_days_year * 30)).date()
-ten_years_ago = (pd.Timestamp.today() - pd.Timedelta(days = total_days_year * 10)).date()
-five_years_ago = (pd.Timestamp.today() - pd.Timedelta(days = total_days_year * 5)).date()
-three_years_ago = (pd.Timestamp.today() - pd.Timedelta(days = total_days_year * 3)).date()
-one_year = (pd.Timestamp.today() - pd.Timedelta(days = total_days_year * 1)).date()
-six_months = (pd.Timestamp.today() - pd.Timedelta(days = total_days_year / 2)).date()
-yesterday = (pd.Timestamp.today() - pd.Timedelta(days = 1)).date()
-sixty_days = (pd.Timestamp.today() - pd.Timedelta(days = 59)).date()
-# Portfolio vars
+selected_page = st.selectbox("Select a page", page_options)
 
-share_size = 100
-initial_capital = 100000
+st.sidebar.markdown("[GitHub Repo](https://github.com/yourusername/portfolio-analysis-app)")
+st.sidebar.markdown("[Download Sample Data](https://example.com/sample_data.zip)")
 
-# Optionable stocks 
-optionable_stocks_path = Path('./Resources/optionable_stocks.csv')
-with open(optionable_stocks_path, 'r') as file:
-    optionable_stocks = file.read()
-optionable_stocks = optionable_stocks.replace('\n', ' ')
+# Show selected page content
+st.title("Portfolio Analysis")
 
+if selected_page == "Page 1: Sharpe ratio v Cumulative returns":
+    st.header(selected_page)
+    algorithm = st.selectbox("Select Algorithm", ["Algorithm A", "Algorithm B", "Algorithm C"])
+    image_path = os.path.join("Resources", f"{algorithm.lower()}_1.jpg")
+    st.image(image_path)
 
-#user_ticker = st.text_input(label='What ticker would you like to analyze?', max_chars=4, key= 'user_ticker')
-#st.write('Pulling YF data')
-#stocks_1d = get_data('1d', '2017-01-01', yesterday, optionable_stocks)
-#st.write('YF data pulled successfully')
+elif selected_page == "Page 2: Annualized Returns vs Annualized Volatility":
+    st.header(selected_page)
+    algorithm = st.selectbox("Select Algorithm", ["Algorithm A", "Algorithm B", "Algorithm C"])
+    image_path = os.path.join("Resources", f"{algorithm.lower()}_2.jpg")
+    st.image(image_path)
 
+elif selected_page == "Page 3: Top 3 Portfolio Returns vs S&P":
+    st.header(selected_page)
+    algorithm = st.selectbox("Select Algorithm", ["Algorithm A", "Algorithm B", "Algorithm C"])
+    image_path = os.path.join("Resources", f"{algorithm.lower()}_3.jpg")
+    st.image(image_path)
 
-user_ticker = "AAPL"
-#if st.button("Pull data on this ticker"):
-#        ticker_data = get_individual_stock(st.session_state.user_ticker, stocks_1d)
-#        st.write(f'{user_ticker} data ready')
-#        st.dataframe(ticker_data)
-#if 'user_ticker' not in st.session_state:
-#    st.session_state.user_ticker = st.text_input(label='What ticker would you like to analyze?', max_chars=4)
-#if 'stocks_1d' not in st.session_state:
-#    st.session_state.stocks_1d = get_data('1d', '2017-01-01', yesterday, optionable_stocks)
-#st.write('Data pulled successfully')
+elif selected_page == "Page 4: Returns vs Standard Deviation":
+    st.header(selected_page)
+    algorithm = st.selectbox("Select Algorithm", ["Algorithm A", "Algorithm B", "Algorithm C"])
+    image_path = os.path.join("Resources", f"{algorithm.lower()}_4.jpg")
+    st.image(image_path)
 
-if st.button("Pull data on this ticker"):
-    stocks_1d = get_data('1d', '2017-01-01', yesterday, optionable_stocks)
-    ticker_data = get_individual_stock(user_ticker, stocks_1d)
-    st.write(ticker_data)
-    st.write(stocks_1d)
-    p1 = ticker_data['Close'].hvplot()
-    st.bokeh_chart(hv.render(p1, backend='bokeh'))
+elif selected_page == "Page 5: Performance Metrics":
+    st.header(selected_page)
+    algorithm = st.selectbox("Select Algorithm", ["Algorithm A", "Algorithm B", "Algorithm C"])
+    image_path = os.path.join("Resources", f"{algorithm.lower()}_5.jpg")
+    st.image(image_path)
