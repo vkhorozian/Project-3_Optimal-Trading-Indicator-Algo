@@ -1,0 +1,9 @@
+jupyterlab
+yfinance
+quantstats
+hvplot
+pandas
+numpy
+finta
+matplotlib
+streamlit
