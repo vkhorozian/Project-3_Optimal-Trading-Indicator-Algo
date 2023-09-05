@@ -2,6 +2,24 @@
 
 This project is a summary of project 1, 2 and 3 analysis insights for our investment research and algo trading strategies.
 
+# Project 3: Goals
+
+1. Data Collection and Processing:
+    - Data from projects 1 and 2 are the datasets that will be utilized in project 3.  No additional data is
+    required for project 3.
+    - Data preprocessing will involve additional analysis and summary of data insights from project 2. 
+
+2. Data Analysis and Trading Insights:
+    - Isolate winning trading strategies within the subset population studied.
+    - Create portfolio of trades that maximize returns over the time period analyzed.
+    - Develop several trading/portfolio strategies depending on investor goals.
+
+3. Digital Trading Analysis Platform (DTAP):
+    - Develop a digital trading analysis platform that summarizes:
+    - Trading strategy performance by stocks, sectors and indexes
+    - Optimal portfolio of trades based on specific investment criteria.
+    - Winning portfolio strategies that provide efficient frontier return performance.
+
 **Project 1 Portfolio**:  This is a stock selection quantitative investment research-based portfolio designed to beat market indexes from a return/risk perspective.
 
 **Algo Trading Strategy 1 Portfolio**:  This is an algo trading portfolio selected based on the following criteria:
@@ -121,27 +139,6 @@ This project is a summary of project 1, 2 and 3 analysis insights for our invest
 - MACD: 5/9
 - ADX: 1/9
 - EMA 20: 4/9
-
-
-# Project 3: Goals
-
-1. Data Collection and Processing:
-    - Data from projects 1 and 2 are the datasets that will be utilized in project 3.  No additional data is
-    required for project 3.
-    - Data preprocessing will involve additional analysis and summary of data insights from project 2. 
-
-2. Data Analysis and Trading Insights:
-    - Isolate winning trading strategies within the subset population studied.
-    - Create portfolio of trades that maximize returns over the time period analyzed.
-    - Develop several trading/portfolio strategies depending on investor goals.
-    - Identify simple Machine Learning algorithms for use in strategy execution.
-
-3. Digital Trading Analysis Platform (DTAP):
-    - Develop a digital trading analysis platform that summarizes:
-    - Trading strategy performance by stocks, sectors and indexes
-    - Optimal portfolio of trades based on specific investment criteria.
-    - Winning portfolio strategies that provide efficient frontier return performance.
-
 
 ### **Top Entry Signals Use:**
     •	EMA 20

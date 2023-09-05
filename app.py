@@ -77,4 +77,5 @@ elif selected_page == "Summary":
     st.header(selected_page)
     st.write('From the beginning of 2017 to present day')
     df = pd.read_csv('Resources/summary.csv', index_col='Portfolio')
+    df[['Ann Volatility%','Cumulative Returns%', 'Ann Returns%']] = round(df[['Ann Volatility%','Cumulative Returns%', 'Ann Returns%']] * 100,1)
     st.dataframe(df)
