@@ -12,11 +12,6 @@ This project is a summary of project 1, 2 and 3 analysis insights for our invest
 2. Data Analysis and Trading Insights:
     - Isolate winning trading strategies within the subset population studied.
     - Create portfolio of trades that maximize returns over the time period analyzed.
-    - Develop several trading/portfolio strategies depending on investor goals.
-
-3. Digital Trading Analysis Platform (DTAP):
-    - Develop a digital trading analysis platform that summarizes:
-    - Trading strategy performance by stocks, sectors and indexes
     - Optimal portfolio of trades based on specific investment criteria.
     - Winning portfolio strategies that provide efficient frontier return performance.
 
