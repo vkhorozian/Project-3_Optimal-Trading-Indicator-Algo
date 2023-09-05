@@ -1,18 +1,20 @@
 import streamlit as st
 import os
+import pandas as pd
+import hvplot.pandas
 
 # Dropdown navigation
 page_options = [
     "Project 1 Portfolio Update",
     "Project 1 Portfolio vs Algo",
-    "Algo 1 Deep Dive",
-    "Algo 2 Deep Dive",
+    "Algo 1 Portfolio Deep Dive",
+    "Algo 2 Portfolio Deep Dive",
     "Summary"
 ]
 
 selected_page = st.selectbox("Select a page", page_options)
 
-st.sidebar.markdown("[GitHub Repo](https://github.com/yourusername/portfolio-analysis-app)")
+st.sidebar.markdown("[GitHub Repo](https://github.com/vkhorozian/Project-3)")
 
 # Show selected page content
 st.title("Portfolio Analysis")
@@ -36,7 +38,7 @@ if selected_page == "Project 1 Portfolio Update":
 
     st.header('Combined chart of Return vs Volatility')
 
-    st.write('Orange: Indices. Green: Portfolio.')
+    st.write('Orange: Portfolio. Red: Indices. Blue: Stocks')
 
     st.image('Resources/p1_combined.png')
 
@@ -54,21 +56,25 @@ elif selected_page == "Project 1 Portfolio vs Algo":
 
     st.header('Combined chart of Return vs Volatility')
 
-    st.write('Green: Indices. Orange: Portfolio. Cyan: Algo 1. Black: Algo 2')
+    st.write('Blue: Indices. Red: Portfolio. Gold: Algo 1. Green: Algo 2')
 
     st.image('Resources/p1algo_combined.png')
 
-elif selected_page == "Algo 1 Deep Dive":
+elif selected_page == "Algo 1 Portfolio Deep Dive":
     st.header(selected_page)
-    st.image('Resources/bnh_algo_cu.png')
     st.image('Resources/bnh_algo_sharpe_volatility.png')
+    st.image('Resources/bnh_algo_cu.png')
+
     st.image('Resources/bnh_algo_cu_volat.png')
 
-elif selected_page == "Algo 2 Deep Dive":
+elif selected_page == "Algo 2 Portfolio Deep Dive":
     st.header(selected_page)
-    st.image('Resources/bnh_algo2_cu.png')
     st.image('Resources/bnh_algo2_sharpe_volatility.png')
+    st.image('Resources/bnh_algo2_cu.png')
     st.image('Resources/bnh_algo2_cu_volat.png')
-    
+
 elif selected_page == "Summary":
     st.header(selected_page)
+    st.write('From the beginning of 2017 to present day')
+    df = pd.read_csv('Resources/summary.csv', index_col='Portfolio')
+    st.dataframe(df)
